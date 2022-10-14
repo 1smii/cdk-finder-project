@@ -1,0 +1,27 @@
+{
+  "name": "cdk-finder-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1smii/cdk-finder-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1smii/cdk-finder-project/issues"
+  },
+  "homepage": "https://github.com/1smii/cdk-finder-project#readme",
+  "devDependencies": {
+    "aws-cdk": "^2.46.0",
+    "aws-cdk-lib": "^2.46.0",
+    "constructs": "^10.1.131",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
