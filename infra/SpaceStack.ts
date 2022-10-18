@@ -1,12 +1,12 @@
-import { Stack, StackProps } from 'aws-cdk-lib'
+import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Code, Function as LambdaFunction, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { join } from 'path';
-import { LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway'
+import { LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { GenericLinuxImage } from 'aws-cdk-lib/aws-ec2';
 import { GenericTable } from './GenericTable';
-import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs'
-
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { PolicyStatement } from 'aws-cdk-lib/aws-iam';
 
 export class SpaceStack extends Stack {
 
@@ -32,6 +32,11 @@ export class SpaceStack extends Stack {
             handler: 'handler'
         })
 
+        const s3ListPolicy = new PolicyStatement();
+        s3ListPolicy.addActions('s3:ListAllMyBuckets');
+        s3ListPolicy.addResources('*');
+
+        helloLambdaNodeJs.addToRolePolicy(s3ListPolicy);
 
         // Lambda integration:
         const helloLambdaIntegration = new LambdaIntegration(helloLambda);
